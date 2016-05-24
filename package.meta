@@ -12,10 +12,10 @@ composer:
 
   require:
     php: ^5.3.2 || ^7.0
-    # it's provides to project
+    composer/composer: ~1.1
+    # provides
     # - symfony/finder
     # - symfony/filesystem
-    composer/composer: ~1.1
 
   require-dev:
     kamilsk/common: 3.x-dev
