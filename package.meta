@@ -1,6 +1,8 @@
 composer:
   name: octolab/cleaner
-  type: plugin
+  # https://getcomposer.org/doc/articles/plugins.md
+  # https://www.sitepoint.com/drunk-with-the-power-of-composer-plugins/
+  type: composer-plugin
   description: Composer plugin to removing development files.
   homepage: https://github.com/octolab/Cleaner
   license: MIT
@@ -29,6 +31,7 @@ composer:
       OctoLab\Cleaner\: tests/
 
   extra:
+    class: OctoLab\Cleaner\Plugin
     branch-alias:
       dev-master: 1.x-dev
 

@@ -2,6 +2,7 @@
   "name": "octolab/cleaner", 
   "license": "MIT", 
   "extra": {
+    "class": "OctoLab\\Cleaner\\Plugin", 
     "branch-alias": {
       "dev-master": "1.x-dev"
     }
@@ -31,7 +32,7 @@
       "email": "kamil@samigullin.info"
     }
   ], 
-  "type": "plugin", 
+  "type": "composer-plugin", 
   "support": {
     "issues": "https://github.com/octolab/Cleaner/issues"
   }, 
