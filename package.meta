@@ -1,3 +1,8 @@
+# package.meta is just a concept about how to create more humanable package description
+# in composer or npm worlds without any vendor's pain.
+#
+# current status: unstable
+
 composer:
   name: octolab/cleaner
   type: composer-plugin
