@@ -10,7 +10,7 @@ namespace OctoLab\Cleaner;
 final class CommandProvider implements \Composer\Plugin\Capability\CommandProvider
 {
     /**
-     * @return \Symfony\Component\Console\Command\Command[]
+     * @return \Composer\Command\BaseCommand[]
      *
      * @throws \Symfony\Component\Console\Exception\LogicException
      */

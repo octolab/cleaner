@@ -5,6 +5,8 @@ declare(strict_types = 1);
 namespace OctoLab\Cleaner;
 
 use Composer\Composer;
+use Composer\DependencyResolver\Operation\InstallOperation;
+use Composer\DependencyResolver\Operation\UpdateOperation;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\Installer\PackageEvent;
 use Composer\Installer\PackageEvents;
@@ -17,6 +19,8 @@ use Composer\Plugin\PluginInterface;
  */
 final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
 {
+    const EXTRA_KEY = 'dev-files';
+
     /** @var Composer */
     private $composer;
     /** @var IOInterface */
@@ -57,6 +61,19 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
      */
     public function handlePackageEvent(PackageEvent $event)
     {
-        $event->getOperation()->getReason();
+        $operation = $event->getOperation();
+        if ($operation instanceof InstallOperation) {
+            $package = $operation->getPackage();
+        } elseif ($operation instanceof UpdateOperation) {
+            $package = $operation->getTargetPackage();
+        } else {
+            return;
+        }
+        $packageExtra = $package->getExtra();
+        if (isset($packageExtra[self::EXTRA_KEY]) && is_array($packageExtra[self::EXTRA_KEY])) {
+            //
+        } else {
+            return;
+        }
     }
 }

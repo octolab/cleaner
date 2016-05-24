@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace OctoLab\Cleaner;
 
-use Symfony\Component\Console\Command\Command;
+use Composer\Command\BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Kamil Samigullin <kamil@samigullin.info>
  */
-final class CleanCommand extends Command
+final class CleanCommand extends BaseCommand
 {
     /**
      * {@inheritdoc}
@@ -24,6 +24,7 @@ final class CleanCommand extends Command
         $this
             ->setName('octolab:clean')
             ->addOption('package', 'p', InputOption::VALUE_OPTIONAL, 'Package for cleaning.')
+            ->addOption('categories', 'c', InputOption::VALUE_OPTIONAL, 'Categories of dev files separated by commas.')
         ;
     }
 
