@@ -1,0 +1,18 @@
+{
+  "name": "octolab/cleaner", 
+  "license": "MIT", 
+  "authors": [
+    {
+      "role": "lead", 
+      "name": "Kamil Samigullin", 
+      "email": "kamil@samigullin.info"
+    }
+  ], 
+  "homepage": "https://github.com/octolab/Cleaner", 
+  "require": {
+    "composer/composer": "~1.1", 
+    "php": "^5.3.2 || ^7.0"
+  }, 
+  "type": "plugin", 
+  "description": null
+}
