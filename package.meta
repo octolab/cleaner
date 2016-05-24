@@ -1,6 +1,7 @@
 # package.meta is just a concept about how to create more humanable package description
 # in composer or npm worlds without any vendor's pain.
 #
+# description: https://github.com/octolab/pmc
 # current status: unstable
 
 composer:
