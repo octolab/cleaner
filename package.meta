@@ -1,7 +1,7 @@
 composer:
   name: octolab/cleaner
   type: plugin
-  description:
+  description: Composer plugin to removing development files.
   homepage: https://github.com/octolab/Cleaner
   license: MIT
 
@@ -16,3 +16,18 @@ composer:
     # - symfony/finder
     # - symfony/filesystem
     composer/composer: ~1.1
+
+  autoload:
+    psr-4:
+      OctoLab\Cleaner\: src/
+
+  autoload-dev:
+    psr-4:
+      OctoLab\Cleaner\: tests/
+
+  extra:
+    branch-alias:
+      dev-master: 1.x-dev
+
+  support:
+    issues: https://github.com/octolab/Cleaner/issues
