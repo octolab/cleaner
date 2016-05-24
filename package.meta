@@ -1,7 +1,5 @@
 composer:
   name: octolab/cleaner
-  # https://getcomposer.org/doc/articles/plugins.md
-  # https://www.sitepoint.com/drunk-with-the-power-of-composer-plugins/
   type: composer-plugin
   description: Composer plugin to removing development files.
   homepage: https://github.com/octolab/Cleaner
@@ -13,14 +11,11 @@ composer:
     role: lead
 
   require:
-    php: ^5.3.2 || ^7.0
-    composer/composer: ~1.1
-    # provides
-    # - symfony/finder
-    # - symfony/filesystem
+    php:                    ^5.3.2 || ^7.0
+    composer-plugin-api:    ~1.0
 
   require-dev:
-    kamilsk/common: 3.x-dev
+    composer/composer:      ~1.1
 
   autoload:
     psr-4:
