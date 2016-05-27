@@ -9,4 +9,11 @@ namespace OctoLab\Cleaner;
  */
 class CleanCommandTest extends TestCase
 {
+    /**
+     * @test
+     */
+    public function test()
+    {
+        self::assertTrue(true, 'Not implemented yet.');
+    }
 }
