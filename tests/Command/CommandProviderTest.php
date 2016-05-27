@@ -14,8 +14,11 @@ class CommandProviderTest extends TestCase
     /**
      * @test
      */
-    public function test()
+    public function getCommands()
     {
-        self::assertTrue(true, 'Not implemented yet.');
+        $provider = new CommandProvider();
+        foreach ($provider->getCommands() as $command) {
+            self::assertInstanceOf('Composer\Command\BaseCommand', $command);
+        }
     }
 }

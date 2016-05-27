@@ -7,8 +7,10 @@
       "dev-master": "1.x-dev"
     }
   }, 
-  "require-dev": {
-    "composer/composer": "~1.1"
+  "config": {
+    "platform": {
+      "php": "5.3.9"
+    }
   }, 
   "require": {
     "php": "^5.3.2 || ^7.0", 
@@ -32,6 +34,10 @@
       "email": "kamil@samigullin.info"
     }
   ], 
+  "require-dev": {
+    "composer/composer": "~1.1", 
+    "symfony/yaml": "^2.5 || ^3.0"
+  }, 
   "type": "composer-plugin", 
   "support": {
     "issues": "https://github.com/octolab/Cleaner/issues"
