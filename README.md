@@ -28,8 +28,34 @@ $ git remote add mirror git@bitbucket.org:kamilsk/cleaner.git
 $ composer global require octolab/cleaner:1.x-dev
 ```
 
+## Pulse of repository
+
+### [Changelog](CHANGELOG.md)
+
+### General information
+
+[![Build status](https://travis-ci.org/octolab/Cleaner.svg?branch=master)](https://travis-ci.org/octolab/Cleaner)
+[![Tests status](http://php-eye.com/badge/octolab/cleaner/tested.svg?branch=1.x-dev)](http://php-eye.com/package/octolab/cleaner)
+[![Latest stable version](https://poser.pugx.org/octolab/cleaner/v/stable.png)](https://packagist.org/packages/octolab/cleaner)
+[![License](https://poser.pugx.org/octolab/cleaner/license.png)](https://packagist.org/packages/octolab/cleaner)
+
+### Code quality
+
+[![Code coverage](https://scrutinizer-ci.com/g/octolab/Cleaner/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/octolab/Cleaner/?branch=master)
+[![Scrutinizer code quality](https://scrutinizer-ci.com/g/octolab/Cleaner/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/octolab/Cleaner/?branch=master)
+
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/99b52451-fe3f-49b3-9842-63254d7e7e34/big.png)](https://insight.sensiolabs.com/projects/99b52451-fe3f-49b3-9842-63254d7e7e34)
+
+### Stats
+
+[![Total downloads](https://poser.pugx.org/octolab/cleaner/downloads.png)](https://packagist.org/packages/octolab/cleaner)
+[![Monthly downloads](https://poser.pugx.org/octolab/cleaner/d/monthly.png)](https://packagist.org/packages/octolab/cleaner)
+[![Daily downloads](https://poser.pugx.org/octolab/cleaner/d/daily.png)](https://packagist.org/packages/octolab/cleaner)
+[![Total references](https://www.versioneye.com/php/octolab:cleaner/reference_badge.svg)](https://www.versioneye.com/php/octolab:cleaner/references)
+
 ### Feedback
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/octolab/Cleaner?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![@ikamilsk](https://img.shields.io/badge/author-%40ikamilsk-blue.svg)](https://twitter.com/ikamilsk)
 
 ## Contributing
