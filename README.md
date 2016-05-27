@@ -43,6 +43,7 @@ $ composer global require octolab/cleaner:1.x-dev
 
 [![Code coverage](https://scrutinizer-ci.com/g/octolab/Cleaner/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/octolab/Cleaner/?branch=master)
 [![Scrutinizer code quality](https://scrutinizer-ci.com/g/octolab/Cleaner/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/octolab/Cleaner/?branch=master)
+[![Code Climate code quality](https://codeclimate.com/github/octolab/Cleaner/badges/gpa.svg)](https://codeclimate.com/github/octolab/Cleaner)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/99b52451-fe3f-49b3-9842-63254d7e7e34/big.png)](https://insight.sensiolabs.com/projects/99b52451-fe3f-49b3-9842-63254d7e7e34)
 
