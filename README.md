@@ -2,6 +2,8 @@
 >
 > [Composer](https://getcomposer.org) plugin to removing development files.
 
+## [Documentation](https://github.com/octolab/Cleaner/wiki)
+
 ## Installation
 
 ### Git (development)
@@ -17,16 +19,14 @@ $ git remote add upstream git@github.com:octolab/Cleaner.git
 #### Mirror
 
 ```bash
-$ git remote add mirror ...
+$ git remote add mirror git@bitbucket.org:kamilsk/cleaner.git
 ```
 
-### Composer
+### Composer (production)
 
 ```bash
 $ composer global require octolab/cleaner:1.x-dev
 ```
-
-...
 
 ### Feedback
 
