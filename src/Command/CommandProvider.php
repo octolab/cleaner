@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace OctoLab\Cleaner;
+namespace OctoLab\Cleaner\Command;
 
 /**
  * @author Kamil Samigullin <kamil@samigullin.info>

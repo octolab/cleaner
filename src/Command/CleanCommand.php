@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace OctoLab\Cleaner;
+namespace OctoLab\Cleaner\Command;
 
 use Composer\Command\BaseCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,7 +17,7 @@ final class CleanCommand extends BaseCommand
     /**
      * {@inheritdoc}
      *
-     * @throws \InvalidArgumentException
+     * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
      */
     protected function configure()
     {

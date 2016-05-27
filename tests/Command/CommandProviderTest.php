@@ -2,7 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace OctoLab\Cleaner;
+namespace OctoLab\Cleaner\Command;
+
+use OctoLab\Cleaner\TestCase;
 
 /**
  * @author Kamil Samigullin <kamil@samigullin.info>
