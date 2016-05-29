@@ -12,7 +12,9 @@ final class CategoryNormalizer implements NormalizerInterface
     /**
      * @param array $devFiles
      *
-     * @return array
+     * @return array<string,array>
+     *
+     * @quality:method [B]
      */
     public function normalize(array $devFiles)
     {

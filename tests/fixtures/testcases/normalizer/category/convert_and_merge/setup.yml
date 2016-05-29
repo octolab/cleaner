@@ -1,6 +1,6 @@
 title: ~
-description: Converting "other" category to array and merging it with numeric entries
 message: ~
+description: Converting "other" category to array and merging it with numeric entries
 
 extra:
   dev-files:

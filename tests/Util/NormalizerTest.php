@@ -13,6 +13,19 @@ use Symfony\Component\Yaml\Yaml;
 class NormalizerTest extends TestCase
 {
     /**
+     * @return array
+     */
+    public function cases()
+    {
+        $cases = array();
+        $normalizer = new CategoryNormalizer();
+        foreach (glob($this->getNormalizerTestCasePath() . '/category/*/') as $folder) {
+            $cases[] = array($normalizer, $folder);
+        }
+        return $cases;
+    }
+
+    /**
      * @test
      * @dataProvider cases
      *
@@ -30,25 +43,12 @@ class NormalizerTest extends TestCase
                     'dev-files' => array(),
                 ),
             ),
-            (array)Yaml::parse(file_get_contents($folder . '/setup.yml'))
+            Yaml::parse(file_get_contents($folder . '/setup.yml'))
         );
         self::assertEquals(
-            (array)Yaml::parse(file_get_contents($folder . '/expected.yml')),
+            Yaml::parse(file_get_contents($folder . '/expected.yml')),
             $normalizer->normalize($testCase['extra']['dev-files']),
             $testCase['message']
         );
-    }
-
-    /**
-     * @return array
-     */
-    public function cases()
-    {
-        $cases = array();
-        $normalizer = new CategoryNormalizer();
-        foreach (glob($this->getNormalizerTestCasePath() . '/category/*/') as $folder) {
-            $cases[] = array($normalizer, $folder);
-        }
-        return $cases;
     }
 }

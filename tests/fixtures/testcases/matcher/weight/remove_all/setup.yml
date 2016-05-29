@@ -1,0 +1,8 @@
+title: ~
+message: ~
+description: Removing all development files in all packages
+
+config:
+  octolab/cleaner:
+    clean:
+      "*": "*"

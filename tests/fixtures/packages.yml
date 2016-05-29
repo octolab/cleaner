@@ -1,0 +1,12 @@
+vendor/package1:
+- /*.md
+- !LICENSE.md
+
+vendor/package2:
+  other: [/*.md, !LICENSE.md]
+
+vendor/package3:
+  bin:    [/bin, /action/demo.sh]
+  docs:   [/docs]
+  tests:  [/tests]
+  other:  [/examples/*]
