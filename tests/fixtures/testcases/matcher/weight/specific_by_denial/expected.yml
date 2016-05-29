@@ -1,0 +1,5 @@
+vendor/package1: [other]
+
+vendor/package2: [other]
+
+vendor/package3: [bin, tests, other]

@@ -1,0 +1,8 @@
+title: ~
+message: ~
+description: Removing only "docs" category in all packages
+
+config:
+  octolab/cleaner:
+    clean:
+      "*": [docs, "*"] # === [docs]

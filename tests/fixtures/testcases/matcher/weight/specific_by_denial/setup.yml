@@ -1,0 +1,8 @@
+title: ~
+message: ~
+description: Removing all development files except "docs" category in the package "vendor/package3"
+
+config:
+  octolab/cleaner:
+    clean:
+      vendor/package3: [!docs, docs, "*"] # === [!docs]
