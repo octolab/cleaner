@@ -1,0 +1,12 @@
+title: ~
+description: Mixed configuration
+message: ~
+
+extra:
+  dev-files:
+    0:      /*.md
+    bin:    [/bin, /action/demo.sh]
+    1:      [!LICENSE.md]
+    docs:   /docs
+    tests:  /tests
+    other:  [/examples/*]

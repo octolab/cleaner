@@ -10,22 +10,23 @@ namespace OctoLab\Cleaner\Util;
 final class CategoryNormalizer implements NormalizerInterface
 {
     /**
-     * @param array $packageConfig
+     * @param array $devFiles
      *
      * @return array
      */
-    public function normalize(array $packageConfig)
+    public function normalize(array $devFiles)
     {
-        $normalizedConfig = array();
-        foreach ($packageConfig as $i => $value) {
-            if (is_int($i) || $i === 'other') {
-                $normalizedConfig['other'] = array_unique(isset($normalizedConfig['other'])
-                    ? array_merge($normalizedConfig['other'], (array)$value)
-                    : (array)$value);
+        $normalized = array();
+        foreach ($devFiles as $i => $value) {
+            if (is_numeric($i) || $i === 'other') {
+                $normalized['other'][] = (array)$value;
             } else {
-                $normalizedConfig[$i] = (array)$value;
+                $normalized[$i] = (array)$value;
             }
         }
-        return $normalizedConfig;
+        if (isset($normalized['other'])) {
+            $normalized['other'] = array_unique(call_user_func_array('array_merge', $normalized['other']));
+        }
+        return $normalized;
     }
 }

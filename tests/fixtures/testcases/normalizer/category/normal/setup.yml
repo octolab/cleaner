@@ -1,0 +1,10 @@
+title: ~
+description: Normal configuration
+message: ~
+
+extra:
+  dev-files:
+    bin:    [/bin, /action/demo.sh]
+    docs:   [/docs]
+    tests:  [/tests]
+    other:  [/examples/*]

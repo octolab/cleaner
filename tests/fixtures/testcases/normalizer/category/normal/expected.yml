@@ -1,0 +1,4 @@
+bin:    [/bin, /action/demo.sh]
+docs:   [/docs]
+tests:  [/tests]
+other:  [/examples/*]

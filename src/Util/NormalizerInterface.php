@@ -8,9 +8,9 @@ namespace OctoLab\Cleaner\Util;
 interface NormalizerInterface
 {
     /**
-     * @param array $packageConfig
+     * @param array $devFiles
      *
      * @return array
      */
-    public function normalize(array $packageConfig);
+    public function normalize(array $devFiles);
 }

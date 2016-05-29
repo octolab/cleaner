@@ -1,0 +1,9 @@
+title: ~
+description: Converting "other" category to array and merging it with numeric entries
+message: ~
+
+extra:
+  dev-files:
+    0:      /*.md
+    other:  !README.md
+    1:      [!LICENSE.md]

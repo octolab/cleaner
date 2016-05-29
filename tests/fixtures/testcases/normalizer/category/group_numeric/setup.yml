@@ -1,0 +1,8 @@
+title: ~
+description: Grouping numeric entries to "other" category
+message: ~
+
+extra:
+  dev-files:
+  - /*.md
+  - [!LICENSE.md]

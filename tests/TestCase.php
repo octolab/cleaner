@@ -9,4 +9,27 @@ namespace OctoLab\Cleaner;
  */
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @return string
+     */
+    protected function getFixturePath()
+    {
+        return __DIR__ . '/fixtures';
+    }
+
+    /**
+     * @return string
+     */
+    protected function getMatcherTestCasePath()
+    {
+        return $this->getFixturePath() . '/testcases/matcher';
+    }
+
+    /**
+     * @return string
+     */
+    protected function getNormalizerTestCasePath()
+    {
+        return $this->getFixturePath() . '/testcases/normalizer';
+    }
 }

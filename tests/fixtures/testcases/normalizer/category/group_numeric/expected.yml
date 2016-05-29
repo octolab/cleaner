@@ -1,0 +1,1 @@
+other: [/*.md, !LICENSE.md]

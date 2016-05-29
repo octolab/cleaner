@@ -1,0 +1,9 @@
+title: ~
+description: Merging "other" category with numeric entries and filtering non-unique
+message: ~
+
+extra:
+  dev-files:
+    0:      /*.md
+    other:  [!README.md, !LICENSE.md]
+    1:      [!LICENSE.md]
