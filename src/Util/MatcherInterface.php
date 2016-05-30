@@ -12,6 +12,8 @@ interface MatcherInterface
      * @param array $devFiles
      *
      * @return array
+     *
+     * @api
      */
     public function match($package, array $devFiles);
 
@@ -19,6 +21,8 @@ interface MatcherInterface
      * @param array $rules
      *
      * @return MatcherInterface
+     *
+     * @api
      */
     public function setRules(array $rules);
 }

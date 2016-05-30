@@ -18,11 +18,19 @@ class MatcherTest extends TestCase
     public function cases()
     {
         $cases = array();
-        $matcher = new WeightMatcher();
+        $matcher = new WeightMatcher(new CategoryNormalizer());
         foreach (glob($this->getMatcherTestCasePath() . '/weight/*/') as $folder) {
             $cases[] = array($matcher, $folder);
         }
         return $cases;
+    }
+
+    /**
+     * @test
+     */
+    public function construct()
+    {
+        new WeightMatcher(new CategoryNormalizer());
     }
 
     /**
@@ -50,7 +58,11 @@ class MatcherTest extends TestCase
         $matcher->setRules($testCase['config']['octolab/cleaner']['clean']);
         $expected = Yaml::parse(file_get_contents($folder . '/expected.yml'));
         foreach ($this->getPackages() as $package => $devFiles) {
-            self::assertEquals($expected[$package], $matcher->match($package, $devFiles), $testCase['message']);
+            self::assertEquals(
+                $expected[$package],
+                $matcher->match($package, $devFiles),
+                sprintf('%s: %s (%s: %s)', $package, $testCase['message'], $testCase['title'], $testCase['description'])
+            );
         }
     }
 }

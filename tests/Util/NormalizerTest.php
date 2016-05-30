@@ -48,7 +48,7 @@ class NormalizerTest extends TestCase
         self::assertEquals(
             Yaml::parse(file_get_contents($folder . '/expected.yml')),
             $normalizer->normalize($testCase['extra']['dev-files']),
-            $testCase['message']
+            sprintf('%s (%s: %s)', $testCase['message'], $testCase['title'], $testCase['description'])
         );
     }
 }

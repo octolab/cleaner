@@ -11,6 +11,8 @@ interface NormalizerInterface
      * @param array $devFiles
      *
      * @return array
+     *
+     * @api
      */
     public function normalize(array $devFiles);
 }
