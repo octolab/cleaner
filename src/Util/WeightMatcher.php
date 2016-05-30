@@ -83,7 +83,9 @@ final class WeightMatcher implements MatcherInterface
     /**
      * @param array $rules
      *
-     * @return array
+     * @return array<bool|null|array|string>
+     *
+     * @quality:method [B]
      */
     private function sort(array $rules)
     {

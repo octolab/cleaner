@@ -33,12 +33,6 @@ final class CleanCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $package = $input->getOption('package');
-        if ($package !== null) {
-            // clean provided package
-        } else {
-            // clean all installed packages
-        }
         return 0;
     }
 }

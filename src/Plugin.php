@@ -52,7 +52,7 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
     public function getCapabilities()
     {
         return array(
-            'Composer\Plugin\Capability\CommandProvider' => 'OctoLab\Cleaner\CommandProvider',
+            'Composer\Plugin\Capability\CommandProvider' => 'OctoLab\Cleaner\Command\CommandProvider',
         );
     }
 
