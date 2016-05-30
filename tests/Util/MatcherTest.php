@@ -50,7 +50,7 @@ class MatcherTest extends TestCase
         $matcher->setRules($testCase['config']['octolab/cleaner']['clean']);
         $expected = Yaml::parse(file_get_contents($folder . '/expected.yml'));
         foreach ($this->getPackages() as $package => $devFiles) {
-            self::assertEquals($expected[$package], $matcher->match($devFiles), $testCase['message']);
+            self::assertEquals($expected[$package], $matcher->match($package, $devFiles), $testCase['message']);
         }
     }
 }

@@ -15,8 +15,9 @@ final class WeightMatcher implements MatcherInterface
     /**
      * {@inheritdoc}
      */
-    public function match(array $devFiles)
+    public function match($package, array $devFiles)
     {
+        assert('is_string($package)');
         return array();
     }
 

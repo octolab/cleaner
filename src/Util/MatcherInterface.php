@@ -8,11 +8,12 @@ namespace OctoLab\Cleaner\Util;
 interface MatcherInterface
 {
     /**
+     * @param string $package
      * @param array $devFiles
      *
      * @return array
      */
-    public function match(array $devFiles);
+    public function match($package, array $devFiles);
 
     /**
      * @param array $rules
