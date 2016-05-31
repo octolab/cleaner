@@ -10,9 +10,7 @@ namespace OctoLab\Cleaner\Util;
 final class CategoryNormalizer implements NormalizerInterface
 {
     /**
-     * @param array $devFiles
-     *
-     * @return array
+     * {@inheritdoc}
      *
      * @quality:method [B]
      */
