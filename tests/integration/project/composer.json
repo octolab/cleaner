@@ -20,7 +20,7 @@
     "octolab/cleaner": {
       "clean": {
         "*": ["!other"],
-        "vendor/package1": ["other"],
+        "vendor/package1": [],
         "vendor/package2": ["*"],
         "vendor/package3": ["!tests"]
       },

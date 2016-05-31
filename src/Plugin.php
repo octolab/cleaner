@@ -101,12 +101,17 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
         if (isset($packageExtra[self::EXTRA_KEY])) {
             $normalized = $this->normalizer->normalize((array)$packageExtra[self::EXTRA_KEY]);
             $matched = $this->matcher->match($package->getName(), array_keys($normalized));
-            $this->cleaner->clean(
+            $this->io->write(sprintf('<info>Start cleaning the package %s...</info>', $package->getName()), true);
+            if ($this->cleaner->clean(
                 $this->composer->getInstallationManager()->getInstallPath($package),
                 array_filter($normalized, function ($key) use ($matched) {
                     return in_array($key, $matched, true);
                 }, ARRAY_FILTER_USE_KEY)
-            );
+            )) {
+                $this->io->write('<info>- success</info>', true);
+            } else {
+                $this->io->write('<error>- failure</error>', true);
+            }
         }
     }
 
