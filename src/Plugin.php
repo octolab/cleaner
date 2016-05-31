@@ -13,18 +13,28 @@ use Composer\Installer\PackageEvents;
 use Composer\IO\IOInterface;
 use Composer\Plugin\Capable;
 use Composer\Plugin\PluginInterface;
+use OctoLab\Cleaner\Util\FakeCleaner;
 
 /**
  * @author Kamil Samigullin <kamil@samigullin.info>
  */
 final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
 {
+    const CONFIG_KEY = 'octolab/cleaner';
     const EXTRA_KEY = 'dev-files';
 
+    /** @var Util\CleanerInterface */
+    private $cleaner;
     /** @var Composer */
     private $composer;
+    /** @var array */
+    private $config;
     /** @var IOInterface */
     private $io;
+    /** @var Util\MatcherInterface */
+    private $matcher;
+    /** @var Util\NormalizerInterface */
+    private $normalizer;
 
     /**
      * {@inheritdoc}
@@ -39,11 +49,28 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @throws \InvalidArgumentException
+     * @throws \RuntimeException
      */
     public function activate(Composer $composer, IOInterface $io)
     {
+        $default = array(
+            'clean' => array(),
+            'debug' => false,
+            'cleaner' => 'OctoLab\Cleaner\Util\FileCleaner',
+            'matcher' => 'OctoLab\Cleaner\Util\WeightMatcher',
+            'normalizer' => 'OctoLab\Cleaner\Util\CategoryNormalizer',
+        );
+        $this->config = $this->validate(array_merge(
+            $default,
+            array_intersect_key((array)$composer->getConfig()->get(self::CONFIG_KEY), $default)
+        ));
+        $this->cleaner = $this->isDebug() ? new FakeCleaner($io) : new $this->cleaner['cleaner']();
         $this->composer = $composer;
         $this->io = $io;
+        $this->matcher = new $this->config['matcher']();
+        $this->normalizer = new $this->config['normalizer']();
     }
 
     /**
@@ -75,5 +102,32 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
         } else {
             return;
         }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDebug()
+    {
+        return (bool)$this->config['debug'];
+    }
+
+    /**
+     * @param array $config
+     *
+     * @return array
+     *
+     * @throws \InvalidArgumentException
+     */
+    private function validate(array $config)
+    {
+        if (!is_array($config['clean'])
+            || !is_subclass_of($config['cleaner'], 'OctoLab\Cleaner\Util\CleanerInterface', true)
+            || !is_subclass_of($config['matcher'], 'OctoLab\Cleaner\Util\MatcherInterface', true)
+            || !is_subclass_of($config['normalizer'], 'OctoLab\Cleaner\Util\NormalizerInterface', true)
+        ) {
+            throw new \InvalidArgumentException(sprintf('The %s configuration is invalid.', self::CONFIG_KEY));
+        }
+        return $config;
     }
 }

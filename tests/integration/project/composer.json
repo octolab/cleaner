@@ -10,6 +10,12 @@
     "vendor/package2": "1.x-dev",
     "vendor/package3": "1.x-dev"
   },
+  "autoload": {
+    "psr-4": {
+      "OctoLab\\Cleaner\\": "../../../src/",
+      "OctoLab\\Test\\": "src/"
+    }
+  },
   "config": {
     "octolab/cleaner": {
       "clean": {
@@ -20,5 +26,8 @@
       },
       "debug": true
     }
+  },
+  "scripts": {
+    "post-install-cmd": "OctoLab\\Test\\Integration::run"
   }
 }
