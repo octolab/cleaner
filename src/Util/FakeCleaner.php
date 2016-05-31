@@ -37,13 +37,9 @@ final class FakeCleaner implements CleanerInterface
                 foreach ($files as $file) {
                     assert('is_string($file)');
                     if ($file[0] === '!') {
-                        $file = substr($file, 1);
-                        $finder->notName($file);
-                        $finder->notPath($file);
+                        $finder->notName(substr($file, 1));
                     } else {
-                        $file = ltrim($file, '/');
-                        $finder->name($file);
-                        $finder->name($file);
+                        $finder->name(ltrim($file, '/'));
                     }
                 }
             }
