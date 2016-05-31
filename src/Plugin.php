@@ -71,6 +71,7 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
         $this->io = $io;
         $this->matcher = new $this->config['matcher']();
         $this->normalizer = new $this->config['normalizer']();
+        $this->matcher->setRules($this->config['clean']);
     }
 
     /**
@@ -97,10 +98,15 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
             return;
         }
         $packageExtra = $package->getExtra();
-        if (isset($packageExtra[self::EXTRA_KEY]) && is_array($packageExtra[self::EXTRA_KEY])) {
-            //
-        } else {
-            return;
+        if (isset($packageExtra[self::EXTRA_KEY])) {
+            $normalized = $this->normalizer->normalize((array)$packageExtra[self::EXTRA_KEY]);
+            $matched = $this->matcher->match($package->getName(), array_keys($normalized));
+            $this->cleaner->clean(
+                $this->composer->getInstallationManager()->getInstallPath($package),
+                array_filter($normalized, function ($key) use ($matched) {
+                    return in_array($key, $matched, true);
+                }, ARRAY_FILTER_USE_KEY)
+            );
         }
     }
 
