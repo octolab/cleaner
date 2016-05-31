@@ -126,7 +126,7 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
     /**
      * @param array $config
      *
-     * @return array
+     * @return array<string,array|string>
      *
      * @throws \InvalidArgumentException
      *
