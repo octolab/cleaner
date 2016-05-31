@@ -39,6 +39,6 @@ final class FileCleaner implements CleanerInterface
                 $this->filesystem->remove($file);
             }
         }
-        return $result ? call_user_func_array('array_merge', $result) : $result;
+        return $result;
     }
 }

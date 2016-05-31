@@ -43,7 +43,7 @@ final class FakeCleaner implements CleanerInterface
                     $this->io->write('<comment>-- files to delete</comment>');
                     foreach ($files as $file) {
                         $result[] = $file;
-                        $this->io->write(sprintf('<comment>--- %s/%s</comment>', $packagePath, $file));
+                        $this->io->write(sprintf('<comment>--- %s</comment>', $file));
                     }
                 } else {
                     $this->io->write('<comment>--- nothing found</comment>');

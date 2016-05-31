@@ -66,7 +66,7 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
             $default,
             array_intersect_key((array)$composer->getConfig()->get(self::CONFIG_KEY), $default)
         ));
-        $this->cleaner = $this->isDebug() ? new FakeCleaner($io) : new $this->cleaner['cleaner']();
+        $this->cleaner = $this->isDebug() ? new FakeCleaner($io) : new $this->config['cleaner']();
         $this->composer = $composer;
         $this->io = $io;
         $this->matcher = new $this->config['matcher']();
@@ -86,6 +86,8 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
 
     /**
      * @param PackageEvent $event
+     *
+     * @throws \Exception
      *
      * @quality:method [B]
      */
@@ -116,9 +118,9 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
                         $this->io->write(sprintf('<info>-- file %s was removed</info>', $file), true);
                     }
                 }
-                $this->io->write('<info>- success</info>', true);
             } catch (\Exception $e) {
-                $this->io->write('<error>- failure</error>', true);
+                // debug
+                throw $e;
             }
         }
     }

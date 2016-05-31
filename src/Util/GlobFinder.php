@@ -22,7 +22,7 @@ final class GlobFinder implements FinderInterface
         $before = getcwd();
         $add = array();
         $sub = array();
-        chdir($this->current);
+        chdir($cwd = $this->current);
         foreach ($patterns as $pattern) {
             assert('is_string($pattern)');
             if ($pattern[0] === '!') {
@@ -32,12 +32,14 @@ final class GlobFinder implements FinderInterface
             }
         }
         chdir($before);
-        return array_unique(
+        return array_map(function ($file) use ($cwd) {
+            return $cwd . '/' . $file;
+        }, array_unique(
             array_diff(
                 $add ? call_user_func_array('array_merge', $add) : $add,
                 $sub ? call_user_func_array('array_merge', $sub) : $sub
             )
-        );
+        ));
     }
 
     /**
