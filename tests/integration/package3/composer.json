@@ -1,0 +1,14 @@
+{
+  "name": "vendor/package3",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    },
+    "dev-files": {
+      "bin": ["/bin", "/action/demo.sh"],
+      "docs": ["/docs"],
+      "tests": ["/tests"],
+      "other": ["/examples/*"]
+    }
+  }
+}

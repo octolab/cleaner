@@ -1,2 +1,4 @@
+/tests/integration/*/vendor/
+/tests/integration/*/composer.lock
 /vendor/
 composer.lock

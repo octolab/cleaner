@@ -1,0 +1,24 @@
+{
+  "name": "octolab/cleaner-test",
+  "repositories": [
+    { "url": "../package1", "type": "path" },
+    { "url": "../package2", "type": "path" },
+    { "url": "../package3", "type": "path" }
+  ],
+  "require": {
+    "vendor/package1": "1.x-dev",
+    "vendor/package2": "1.x-dev",
+    "vendor/package3": "1.x-dev"
+  },
+  "config": {
+    "octolab/cleaner": {
+      "clean": {
+        "*": ["!other"],
+        "vendor/package1": ["other"],
+        "vendor/package2": ["*"],
+        "vendor/package3": ["!tests"]
+      },
+      "debug": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "vendor/package2",
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    },
+    "dev-files": {
+      "other": [
+        "/*.md",
+        "!LICENSE.md"
+      ]
+    }
+  }
+}
