@@ -11,6 +11,8 @@ interface CleanerInterface
      * @param string $packagePath
      * @param array $devFiles
      *
+     * @return string[]
+     *
      * @throws \RuntimeException
      *
      * @api

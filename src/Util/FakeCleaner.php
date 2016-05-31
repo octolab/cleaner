@@ -28,19 +28,21 @@ final class FakeCleaner implements CleanerInterface
     /**
      * {@inheritdoc}
      *
-     * @quality:method [D]
+     * @quality:method [B]
      */
     public function clear($packagePath, array $devFiles)
     {
         assert('is_string($packagePath) && is_readable($packagePath)');
+        $result = array();
         if ($devFiles !== array()) {
             $this->finder->setCurrentDir($packagePath);
-            foreach ($devFiles as $group => $files) {
+            foreach ($devFiles as $group => $patterns) {
                 $this->io->write(sprintf('<info>- add rules from group "%s"</info>', $group), true);
-                $result = $this->finder->find($files);
-                if ($result) {
+                $files = $this->finder->find($patterns);
+                if ($files) {
                     $this->io->write('<comment>-- files to delete</comment>');
-                    foreach ($result as $file) {
+                    foreach ($files as $file) {
+                        $result[] = $file;
                         $this->io->write(sprintf('<comment>--- %s/%s</comment>', $packagePath, $file));
                     }
                 } else {
@@ -50,5 +52,6 @@ final class FakeCleaner implements CleanerInterface
         } else {
             $this->io->write('<comment>- there is nothing to clear</comment>', true);
         }
+        return $result;
     }
 }

@@ -14,6 +14,8 @@ final class GlobFinder implements FinderInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @quality:method [B]
      */
     public function find(array $patterns)
     {

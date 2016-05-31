@@ -105,12 +105,17 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
             $matched = $this->matcher->match($package->getName(), array_keys($normalized));
             $this->io->write(sprintf('<info>Start clearing the package %s...</info>', $package->getName()), true);
             try {
-                $this->cleaner->clear(
+                $files = $this->cleaner->clear(
                     $this->composer->getInstallationManager()->getInstallPath($package),
                     array_filter($normalized, function ($key) use ($matched) {
                         return in_array($key, $matched, true);
                     }, ARRAY_FILTER_USE_KEY)
                 );
+                if (!$this->isDebug()) {
+                    foreach ($files as $file) {
+                        $this->io->write(sprintf('<info>-- file %s was removed</info>', $file), true);
+                    }
+                }
                 $this->io->write('<info>- success</info>', true);
             } catch (\Exception $e) {
                 $this->io->write('<error>- failure</error>', true);
