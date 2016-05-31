@@ -12,7 +12,7 @@ final class CategoryNormalizer implements NormalizerInterface
     /**
      * @param array $devFiles
      *
-     * @return array<string,array>
+     * @return array
      *
      * @quality:method [B]
      */

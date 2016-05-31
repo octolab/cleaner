@@ -72,7 +72,7 @@ final class WeightMatcher implements MatcherInterface
     /**
      * @param array $rules
      *
-     * @return array<bool|null|array|string>
+     * @return array
      *
      * @quality:method [B]
      */

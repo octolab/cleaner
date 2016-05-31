@@ -86,6 +86,8 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
 
     /**
      * @param PackageEvent $event
+     *
+     * @quality:method [B]
      */
     public function handlePackageEvent(PackageEvent $event)
     {
@@ -102,14 +104,15 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
             $normalized = $this->normalizer->normalize((array)$packageExtra[self::EXTRA_KEY]);
             $matched = $this->matcher->match($package->getName(), array_keys($normalized));
             $this->io->write(sprintf('<info>Start clearing the package %s...</info>', $package->getName()), true);
-            if ($this->cleaner->clear(
-                $this->composer->getInstallationManager()->getInstallPath($package),
-                array_filter($normalized, function ($key) use ($matched) {
-                    return in_array($key, $matched, true);
-                }, ARRAY_FILTER_USE_KEY)
-            )) {
+            try {
+                $this->cleaner->clear(
+                    $this->composer->getInstallationManager()->getInstallPath($package),
+                    array_filter($normalized, function ($key) use ($matched) {
+                        return in_array($key, $matched, true);
+                    }, ARRAY_FILTER_USE_KEY)
+                );
                 $this->io->write('<info>- success</info>', true);
-            } else {
+            } catch (\Exception $e) {
                 $this->io->write('<error>- failure</error>', true);
             }
         }
@@ -126,7 +129,7 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
     /**
      * @param array $config
      *
-     * @return array<string,array|string>
+     * @return array
      *
      * @throws \InvalidArgumentException
      *

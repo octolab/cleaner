@@ -32,31 +32,36 @@ final class FakeCleaner implements CleanerInterface
     {
         assert('is_string($packagePath) && is_readable($packagePath)');
         if ($devFiles !== array()) {
-            $finder = new Finder();
-            $finder->in($packagePath);
+            chdir($packagePath);
             foreach ($devFiles as $group => $files) {
                 $this->io->write(sprintf('<info>- add rules from group "%s"</info>', $group), true);
-                foreach ($files as $file) {
-                    assert('is_string($file)');
-                    if ($file[0] === '!') {
-                        $finder->notName(substr($file, 1));
+                $add = array();
+                $sub = array();
+                foreach ($files as $pattern) {
+                    assert('is_string($pattern)');
+                    if ($pattern[0] === '!') {
+                        $sub[] = glob(substr($pattern, 1));
                     } else {
-                        $finder->name(ltrim($file, '/'));
+                        $add[] = glob(ltrim($pattern, '/'));
                     }
                 }
-            }
-            $this->io->write('<comment>-- files to delete</comment>');
-            if (count($finder) > 0) {
-                /** @var \Symfony\Component\Finder\SplFileInfo $file */
-                foreach ($finder as $file) {
-                    $this->io->write(sprintf('<comment>--- %s</comment>', $file->getRealPath()));
+                $result = array_unique(
+                    array_diff(
+                        $add ? call_user_func_array('array_merge', $add) : $add,
+                        $sub ? call_user_func_array('array_merge', $sub) : $sub
+                    )
+                );
+                if ($result) {
+                    $this->io->write('<comment>-- files to delete</comment>');
+                    foreach ($result as $file) {
+                        $this->io->write(sprintf('<comment>--- %s/%s</comment>', $packagePath, $file));
+                    }
+                } else {
+                    $this->io->write('<comment>--- nothing found</comment>');
                 }
-            } else {
-                $this->io->write('<comment>--- nothing found</comment>');
             }
         } else {
             $this->io->write('<comment>- there is nothing to clear</comment>', true);
         }
-        return true;
     }
 }
