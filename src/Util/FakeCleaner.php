@@ -25,8 +25,10 @@ final class FakeCleaner implements CleanerInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @quality:method [C]
      */
-    public function clean($packagePath, array $devFiles)
+    public function clear($packagePath, array $devFiles)
     {
         assert('is_string($packagePath) && is_readable($packagePath)');
         if ($devFiles !== array()) {
@@ -53,7 +55,7 @@ final class FakeCleaner implements CleanerInterface
                 $this->io->write('<comment>--- nothing found</comment>');
             }
         } else {
-            $this->io->write('<comment>- there is nothing to clean</comment>', true);
+            $this->io->write('<comment>- there is nothing to clear</comment>', true);
         }
         return true;
     }

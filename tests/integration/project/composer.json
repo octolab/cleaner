@@ -18,7 +18,7 @@
   },
   "config": {
     "octolab/cleaner": {
-      "clean": {
+      "clear": {
         "*": ["!other"],
         "vendor/package1": [],
         "vendor/package2": ["*"],

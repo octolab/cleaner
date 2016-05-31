@@ -56,7 +56,7 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
     public function activate(Composer $composer, IOInterface $io)
     {
         $default = array(
-            'clean' => array(),
+            'clear' => array(),
             'debug' => false,
             'cleaner' => 'OctoLab\Cleaner\Util\FileCleaner',
             'matcher' => 'OctoLab\Cleaner\Util\WeightMatcher',
@@ -71,7 +71,7 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
         $this->io = $io;
         $this->matcher = new $this->config['matcher']();
         $this->normalizer = new $this->config['normalizer']();
-        $this->matcher->setRules($this->config['clean']);
+        $this->matcher->setRules($this->config['clear']);
     }
 
     /**
@@ -101,8 +101,8 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
         if (isset($packageExtra[self::EXTRA_KEY])) {
             $normalized = $this->normalizer->normalize((array)$packageExtra[self::EXTRA_KEY]);
             $matched = $this->matcher->match($package->getName(), array_keys($normalized));
-            $this->io->write(sprintf('<info>Start cleaning the package %s...</info>', $package->getName()), true);
-            if ($this->cleaner->clean(
+            $this->io->write(sprintf('<info>Start clearing the package %s...</info>', $package->getName()), true);
+            if ($this->cleaner->clear(
                 $this->composer->getInstallationManager()->getInstallPath($package),
                 array_filter($normalized, function ($key) use ($matched) {
                     return in_array($key, $matched, true);
@@ -129,10 +129,12 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
      * @return array
      *
      * @throws \InvalidArgumentException
+     *
+     * @quality:method [B]
      */
     private function validate(array $config)
     {
-        if (!is_array($config['clean'])
+        if (!is_array($config['clear'])
             || !is_subclass_of($config['cleaner'], 'OctoLab\Cleaner\Util\CleanerInterface', true)
             || !is_subclass_of($config['matcher'], 'OctoLab\Cleaner\Util\MatcherInterface', true)
             || !is_subclass_of($config['normalizer'], 'OctoLab\Cleaner\Util\NormalizerInterface', true)

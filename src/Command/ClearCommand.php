@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Kamil Samigullin <kamil@samigullin.info>
  */
-final class CleanCommand extends BaseCommand
+final class ClearCommand extends BaseCommand
 {
     /**
      * {@inheritdoc}
@@ -22,7 +22,7 @@ final class CleanCommand extends BaseCommand
     protected function configure()
     {
         $this
-            ->setName('octolab:clean')
+            ->setName('octolab:clear')
             ->addOption('package', 'p', InputOption::VALUE_OPTIONAL, 'Package for cleaning.')
             ->addOption('categories', 'c', InputOption::VALUE_OPTIONAL, 'Categories of dev files separated by commas.')
         ;

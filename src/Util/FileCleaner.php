@@ -26,7 +26,7 @@ final class FileCleaner implements CleanerInterface
     /**
      * {@inheritdoc}
      */
-    public function clean($packagePath, array $devFiles)
+    public function clear($packagePath, array $devFiles)
     {
         assert('is_string($packagePath) && is_readable($packagePath)');
         return true;

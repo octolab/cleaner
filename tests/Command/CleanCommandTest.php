@@ -18,7 +18,7 @@ class CleanCommandTest extends TestCase
      */
     public function execute()
     {
-        $command = new CleanCommand();
+        $command = new ClearCommand();
         $reflection = new \ReflectionObject($command);
         $method = $reflection->getMethod('execute');
         $method->setAccessible(true);

@@ -15,5 +15,5 @@ interface CleanerInterface
      *
      * @api
      */
-    public function clean($packagePath, array $devFiles);
+    public function clear($packagePath, array $devFiles);
 }

@@ -17,7 +17,7 @@ final class CommandProvider implements \Composer\Plugin\Capability\CommandProvid
     public function getCommands()
     {
         return array(
-            new CleanCommand(),
+            new ClearCommand(),
         );
     }
 }
