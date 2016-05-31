@@ -18,19 +18,12 @@ class MatcherTest extends TestCase
     public function cases()
     {
         $cases = array();
-        $matcher = new WeightMatcher(new CategoryNormalizer());
+        $matcher = new WeightMatcher();
+        $normalizer = new CategoryNormalizer();
         foreach (glob($this->getMatcherTestCasePath() . '/weight/*/') as $folder) {
-            $cases[] = array($matcher, $folder);
+            $cases[] = array($matcher, $normalizer, $folder);
         }
         return $cases;
-    }
-
-    /**
-     * @test
-     */
-    public function construct()
-    {
-        new WeightMatcher(new CategoryNormalizer());
     }
 
     /**
@@ -38,9 +31,10 @@ class MatcherTest extends TestCase
      * @dataProvider cases
      *
      * @param MatcherInterface $matcher
+     * @param NormalizerInterface $normalizer
      * @param string $folder
      */
-    public function match(MatcherInterface $matcher, $folder)
+    public function match(MatcherInterface $matcher, NormalizerInterface $normalizer, $folder)
     {
         $testCase = array_replace_recursive(
             array(
@@ -60,7 +54,7 @@ class MatcherTest extends TestCase
         foreach ($this->getPackages() as $package => $devFiles) {
             self::assertEquals(
                 $expected[$package],
-                $matcher->match($package, $devFiles),
+                $matcher->match($package, array_keys($normalizer->normalize($devFiles))),
                 sprintf('%s: %s (%s: %s)', $package, $testCase['message'], $testCase['title'], $testCase['description'])
             );
         }

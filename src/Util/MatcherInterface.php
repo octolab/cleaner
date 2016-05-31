@@ -9,13 +9,13 @@ interface MatcherInterface
 {
     /**
      * @param string $package
-     * @param array $devFiles
+     * @param array $devFileGroups
      *
      * @return array
      *
      * @api
      */
-    public function match($package, array $devFiles);
+    public function match($package, array $devFileGroups);
 
     /**
      * @param array $rules

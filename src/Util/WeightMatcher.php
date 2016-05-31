@@ -14,33 +14,22 @@ final class WeightMatcher implements MatcherInterface
     const ENUM = 2;
     const ALL = 3;
 
-    /** @var NormalizerInterface */
-    private $normalizer;
     /** @var array */
     private $rules;
 
     /**
-     * @param NormalizerInterface $normalizer
-     */
-    public function __construct(NormalizerInterface $normalizer)
-    {
-        $this->normalizer = $normalizer;
-    }
-
-    /**
      * {@inheritdoc}
      */
-    public function match($package, array $devFiles)
+    public function match($package, array $devFileGroups)
     {
         assert('is_string($package)');
-        $keys = array_keys($this->normalizer->normalize($devFiles));
-        $sorted = array();
+        $sortedRules = array();
         if (isset($this->rules[$package])) {
-            $sorted = $this->sort((array)$this->rules[$package]);
+            $sortedRules = $this->sort((array)$this->rules[$package]);
         } elseif (isset($this->rules['*'])) {
-            $sorted = $this->sort((array)$this->rules['*']);
+            $sortedRules = $this->sort((array)$this->rules['*']);
         }
-        return array_values($this->apply($keys, $sorted));
+        return array_values($this->apply($devFileGroups, $sortedRules));
     }
 
     /**
