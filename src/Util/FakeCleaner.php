@@ -31,9 +31,9 @@ final class FakeCleaner implements CleanerInterface
         assert('is_string($packagePath) && is_readable($packagePath)');
         if ($devFiles !== array()) {
             $finder = new Finder();
-            $finder->followLinks()->in($packagePath);
+            $finder->in($packagePath);
             foreach ($devFiles as $group => $files) {
-                $this->io->write(sprintf('<info>- add rules from %s group</info>', $group), true);
+                $this->io->write(sprintf('<info>- add rules from group "%s"</info>', $group), true);
                 foreach ($files as $file) {
                     assert('is_string($file)');
                     if ($file[0] === '!') {
