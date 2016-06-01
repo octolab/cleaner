@@ -12,7 +12,7 @@
 
 ```bash
 $ git clone git@github.com:<your github account>/Cleaner.git
-$ cd Common && composer install
+$ cd Cleaner && composer install
 $ git remote add upstream git@github.com:octolab/Cleaner.git
 ```
 
@@ -25,7 +25,7 @@ $ git remote add mirror git@bitbucket.org:kamilsk/cleaner.git
 ### Composer (production)
 
 ```bash
-$ composer global require octolab/cleaner:1.x-dev
+$ composer global require octolab/cleaner:1.0-alpha
 ```
 
 ## Pulse of repository
@@ -35,7 +35,7 @@ $ composer global require octolab/cleaner:1.x-dev
 ### General information
 
 [![Build status](https://travis-ci.org/octolab/Cleaner.svg?branch=master)](https://travis-ci.org/octolab/Cleaner)
-[![Tests status](http://php-eye.com/badge/octolab/cleaner/tested.svg?branch=1.x-dev)](http://php-eye.com/package/octolab/cleaner)
+[![Tests status](http://php-eye.com/badge/octolab/cleaner/tested.svg?branch=dev-master)](http://php-eye.com/package/octolab/cleaner)
 [![Latest stable version](https://poser.pugx.org/octolab/cleaner/v/stable.png)](https://packagist.org/packages/octolab/cleaner)
 [![License](https://poser.pugx.org/octolab/cleaner/license.png)](https://packagist.org/packages/octolab/cleaner)
 

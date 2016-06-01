@@ -38,4 +38,5 @@ composer:
       dev-master: 1.x-dev
 
   support:
+    irc:    irc://irc.gitter.im/octolab/Cleaner
     issues: https://github.com/octolab/Cleaner/issues
