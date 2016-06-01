@@ -56,7 +56,7 @@ $ composer global require octolab/cleaner:1.0-alpha
 
 ### Feedback
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/octolab/Cleaner?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/octolab/Cleaner)
 [![@ikamilsk](https://img.shields.io/badge/author-%40ikamilsk-blue.svg)](https://twitter.com/ikamilsk)
 
 ## Contributing
