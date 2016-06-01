@@ -17,7 +17,7 @@ final class PluginConfig extends \ArrayObject
     public function __construct(array $config)
     {
         $default = array(
-            'clear' => array(),
+            'clear' => null,
             'debug' => false,
             'cleaner' => '\OctoLab\Cleaner\Util\FileCleaner',
             'matcher' => '\OctoLab\Cleaner\Util\WeightMatcher',
@@ -46,7 +46,7 @@ final class PluginConfig extends \ArrayObject
     {
         /** @var \OctoLab\Cleaner\Util\MatcherInterface $matcher */
         $matcher = new $this['matcher']();
-        return $matcher->setRules($this['clear']);
+        return $matcher->setRules((array)$this['clear']);
     }
 
     /**
