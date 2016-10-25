@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace OctoLab\Cleaner\Util;
 
 use Symfony\Component\Filesystem\Filesystem;
