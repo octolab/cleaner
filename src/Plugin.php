@@ -9,6 +9,7 @@ use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\Installer\PackageEvent;
 use Composer\Installer\PackageEvents;
 use Composer\IO\IOInterface;
+use Composer\Package\PackageInterface;
 use Composer\Plugin\Capable;
 use Composer\Plugin\PluginInterface;
 use OctoLab\Cleaner\Util\FakeCleaner;
@@ -33,6 +34,8 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
     private $matcher;
     /** @var Util\NormalizerInterface */
     private $normalizer;
+    /** @var array */
+    private $devFiles;
 
     /**
      * {@inheritdoc}
@@ -59,6 +62,11 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
         $this->cleaner = $config->isDebug() ? new FakeCleaner($io) : $config->getCleaner();
         $this->matcher = $config->getMatcher();
         $this->normalizer = $config->getNormalizer();
+
+        if (($extra = $this->composer->getPackage()->getExtra()) && isset($extra[self::EXTRA_KEY])) {
+            $this->devFiles = $this->normalizer->normalize((array)$extra[self::EXTRA_KEY]);
+        }
+
     }
 
     /**
@@ -88,21 +96,38 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
         } else {
             return;
         }
+
+        $this->handlePackage($package);
+    }
+
+    /**
+     * @param PackageInterface $package
+     * @throws \Exception
+     */
+    public function handlePackage(PackageInterface $package)
+    {
         $packageExtra = $package->getExtra();
+        $devFiles = (array)$this->devFiles;
         if (isset($packageExtra[self::EXTRA_KEY])) {
-            $normalized = $this->normalizer->normalize((array)$packageExtra[self::EXTRA_KEY]);
-            $matched = $this->matcher->match($package->getName(), array_keys($normalized));
-            $this->io->write(sprintf('<info>Start clearing the package %s...</info>', $package->getName()), true);
+            $devFiles = array_merge($devFiles, $this->normalizer->normalize((array)$packageExtra[self::EXTRA_KEY]));
+        }
+
+        if ($devFiles) {
+            $matched = $this->matcher->match($package->getName(), array_keys($devFiles));
+            if(!$matched) {
+                return;
+            }
+            $this->io->write(sprintf('<info>Clearing the package %s...</info>', $package->getName()), true);
             try {
                 $files = $this->cleaner->clear(
                     $this->composer->getInstallationManager()->getInstallPath($package),
-                    array_filter($normalized, function ($key) use ($matched) {
+                    array_filter($devFiles, function ($key) use ($matched) {
                         return in_array($key, $matched, true);
                     }, ARRAY_FILTER_USE_KEY)
                 );
                 if (!$this->isDebug()) {
                     foreach ($files as $file) {
-                        $this->io->write(sprintf('<info>-- file %s was removed</info>', $file), true);
+                        $this->io->write(sprintf('<info>-- removed: %s</info>', $file), true);
                     }
                 }
             } catch (\Exception $e) {

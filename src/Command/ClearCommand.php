@@ -3,6 +3,8 @@
 namespace OctoLab\Cleaner\Command;
 
 use Composer\Command\BaseCommand;
+use OctoLab\Cleaner\Plugin;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -21,8 +23,12 @@ final class ClearCommand extends BaseCommand
     {
         $this
             ->setName('octolab:clear')
-            ->addOption('package', 'p', InputOption::VALUE_OPTIONAL, 'Package for cleaning.')
-            ->addOption('categories', 'c', InputOption::VALUE_OPTIONAL, 'Categories of dev files separated by commas.')
+            ->setDescription('Remove development files from installed packages')
+            ->addArgument('package', InputArgument::OPTIONAL, 'Package for cleaning.')
+            // @todo
+            //->addArgument('categories', InputArgument::OPTIONAL, 'Categories of dev files separated by commas.')
+            // @todo add possibility to change debug mode in the plugin (and hence its cleaner)
+            //->addOption('debug', null, InputOption::VALUE_OPTIONAL, 'Debug mode - only display files which would be deleted, but do not delete them')
         ;
     }
 
@@ -31,6 +37,34 @@ final class ClearCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $composer = $this->getComposer();
+
+        // @todo is this a proper way to get current plugin instance?
+        $plugin = null;
+        foreach ($composer->getPluginManager()->getPlugins() as $p) {
+            if ($p instanceof Plugin) {
+                $plugin = $p;
+                break;
+            }
+        }
+
+        $repo = $composer->getRepositoryManager()->getLocalRepository();
+
+        $packageFilter = $input->getArgument('package');
+        if ($packageFilter && false === strpos($packageFilter, '*')) {
+            $packages = $repo->findPackages($packageFilter, '*');
+
+            if (!$packages) {
+                throw new \InvalidArgumentException('No packages found for "'.$packageFilter.'"');
+            }
+        } else {
+            $packages = $repo->getPackages();
+        }
+
+        foreach ($packages as $package) {
+            $plugin->handlePackage($package);
+        }
+
         return 0;
     }
 }
