@@ -22,8 +22,11 @@ final class WeightMatcher implements MatcherInterface
     {
         assert('is_string($package)');
         $sortedRules = array();
+        $packageNamespace = false !== ($pos = strpos($package, '/')) ? substr($package, 0, $pos) : '';
         if (isset($this->rules[$package])) {
             $sortedRules = $this->sort((array)$this->rules[$package]);
+        } elseif ($packageNamespace && isset($this->rules[$packageNamespace.'/*'])) {
+            $sortedRules = $this->sort((array)$this->rules[$packageNamespace.'/*']);
         } elseif (isset($this->rules['*'])) {
             $sortedRules = $this->sort((array)$this->rules['*']);
         }
