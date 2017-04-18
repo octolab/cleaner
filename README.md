@@ -6,6 +6,8 @@
 
 ## Installation
 
+[![Join the chat at https://gitter.im/octolab/Cleaner](https://badges.gitter.im/octolab/Cleaner.svg)](https://gitter.im/octolab/Cleaner?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ### Git (development)
 
 [Fork it before](https://github.com/octolab/Cleaner/fork).
