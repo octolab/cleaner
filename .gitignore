@@ -1,3 +1,8 @@
 /tests/integration/*/vendor/
 /vendor/
 composer.lock
+
+# Ignore Eclipse-specific files
+/.settings/
+/.buildpath
+/.project
