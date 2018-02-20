@@ -1,16 +1,18 @@
 language: php
 
 php:
-- master
+- 5.4
+- 5.5
 - 5.6
 - 7.0
 - 7.1
 - 7.2
+- nightly
 - hhvm
 
 matrix:
   allow_failures:
-  - php: master
+  - php: nightly
   - php: hhvm
   fast_finish: true
 
@@ -18,10 +20,13 @@ sudo: false
 
 before_install:
 - travis_retry composer self-update
-- composer global require phpunit/phpunit:^4.8
 
 install:
-- composer install -o
+- flags="--ansi --prefer-dist --optimize-autoloader --no-interaction --no-progress --no-suggest"
+- composer install $flags
+
+script:
+- ./vendor/bin/phpunit
 
 notifications:
   slack: octolab:1eMS7IqOArBipiu31jYVd0cN
