@@ -1,5 +1,8 @@
 language: php
 
+dist: trusty
+sudo: false
+
 php:
 - 5.3
 - 5.4
@@ -17,10 +20,8 @@ matrix:
   - php: hhvm
   fast_finish: true
   include:
-  - dist: precise
-    php: 5.3
-
-sudo: false
+  - php: 5.3
+    dist: precise
 
 before_install:
 - travis_retry composer self-update
