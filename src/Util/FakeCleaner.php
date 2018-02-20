@@ -30,7 +30,8 @@ final class FakeCleaner implements CleanerInterface
      */
     public function clear($packagePath, array $devFiles)
     {
-        assert('is_string($packagePath) && is_readable($packagePath)');
+        assert(is_string($packagePath));
+        assert(is_readable($packagePath));
         $result = array();
         if ($devFiles !== array()) {
             $this->finder->setCurrentDir($packagePath);

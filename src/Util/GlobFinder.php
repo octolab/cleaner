@@ -21,7 +21,7 @@ final class GlobFinder implements FinderInterface
         $before = getcwd();
         chdir($cwd = $this->current);
         foreach ($patterns as $pattern) {
-            assert('is_string($pattern)');
+            assert(is_string($pattern));
             if ($pattern[0] === '!') {
                 foreach (glob(substr($pattern, 1)) as $file) {
                     unset($files[$file]);
