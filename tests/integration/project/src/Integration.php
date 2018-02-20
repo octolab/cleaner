@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace OctoLab\Test;
 
 use Composer\DependencyResolver\DefaultPolicy;

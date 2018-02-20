@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace OctoLab\Cleaner\Command;
 
 use OctoLab\Cleaner\TestCase;

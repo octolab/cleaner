@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace OctoLab\Cleaner;
 
 /**
@@ -29,6 +27,8 @@ class PluginTest extends TestCase
 
     /**
      * @test
+     *
+     * @throws \ReflectionException
      */
     public function getSubscribedEvents()
     {
@@ -37,7 +37,7 @@ class PluginTest extends TestCase
         $constants = $reflection->getConstants();
         foreach ($plugin::getSubscribedEvents() as $event => $method) {
             self::assertContains($event, $constants);
-            self::assertTrue(is_callable(array($plugin, is_array($method) ? $method[0] : $method)));
+            self::assertInternalType('callable', array($plugin, is_array($method) ? $method[0] : $method));
         }
     }
 

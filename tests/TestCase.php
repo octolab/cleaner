@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace OctoLab\Cleaner;
 
 use Symfony\Component\Yaml\Yaml;
@@ -37,6 +35,8 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
 
     /**
      * @return array
+     *
+     * @throws \Symfony\Component\Yaml\Exception\ParseException
      */
     protected function getPackages()
     {

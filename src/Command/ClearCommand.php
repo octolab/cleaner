@@ -6,7 +6,8 @@ use Composer\Command\BaseCommand;
 use OctoLab\Cleaner\Plugin;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
+// @todo support debug option
+//use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -34,6 +35,11 @@ final class ClearCommand extends BaseCommand
 
     /**
      * {@inheritdoc}
+     *
+     * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
+     * @throws \RuntimeException
+     * @throws \InvalidArgumentException
+     * @throws \Exception
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {

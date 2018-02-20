@@ -107,7 +107,7 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
     public function handlePackage(PackageInterface $package)
     {
         $packageExtra = $package->getExtra();
-        $devFiles = (array)$this->devFiles;
+        $devFiles = $this->devFiles;
         if (isset($packageExtra[self::EXTRA_KEY])) {
             $devFiles = array_merge($devFiles, $this->normalizer->normalize((array)$packageExtra[self::EXTRA_KEY]));
         }
@@ -131,8 +131,7 @@ final class Plugin implements Capable, EventSubscriberInterface, PluginInterface
                     }
                 }
             } catch (\Exception $e) {
-                // debug
-                throw $e;
+                throw $e; // debug breakpoint
             }
         }
     }
