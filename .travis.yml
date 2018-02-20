@@ -15,13 +15,14 @@ php:
 - hhvm
 
 matrix:
+  include:
+    - php: 5.3
+      dist: precise
   allow_failures:
+  # - php: 5.3
   - php: nightly
   - php: hhvm
   fast_finish: true
-  include:
-  - php: 5.3
-    dist: precise
 
 before_install:
 - travis_retry composer self-update
