@@ -1,11 +1,15 @@
-> # Cleaner
->
-> [Composer](https://getcomposer.org) plugin to removing development files.
+> # Cleaner [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Composer%20plugin%20for%20removing%20development%20files&url=https://github.com/octolab/Cleaner&via=ikamilsk&hashtags=php,composer,cleaner)
+> [![Analytics](https://ga-beacon.appspot.com/UA-109817251-3/Cleaner/readme?pixel)](https://github.com/octolab/Cleaner)
+> [Composer](https://getcomposer.org) plugin for removing development files.
 
 [![Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/octolab)
-[![License](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](LICENSE)
+[![Build Status](https://travis-ci.org/octolab/Cleaner.svg?branch=master)](https://travis-ci.org/octolab/Cleaner)
+[![Code coverage](https://scrutinizer-ci.com/g/octolab/Cleaner/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/octolab/Cleaner/?branch=master)
+[![Scrutinizer code quality](https://scrutinizer-ci.com/g/octolab/Cleaner/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/octolab/Cleaner/?branch=master)
+[![Code Climate code quality](https://codeclimate.com/github/octolab/Cleaner/badges/gpa.svg)](https://codeclimate.com/github/octolab/Cleaner)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## [Documentation](https://github.com/octolab/Cleaner/wiki)
+## [Documentation](docs)
 
 ## Installation
 
@@ -14,9 +18,9 @@
 [Fork it before](https://github.com/octolab/Cleaner/fork).
 
 ```bash
-$ git clone git@github.com:<your github account>/Cleaner.git
-$ cd Cleaner && composer install
-$ git remote add upstream git@github.com:octolab/Cleaner.git
+$ git clone git@github.com:<your github account>/cleaner.git
+$ cd cleaner && composer install
+$ git remote add upstream git@github.com:octolab/cleaner.git
 ```
 
 #### Mirror
@@ -31,32 +35,6 @@ $ git remote add mirror git@bitbucket.org:kamilsk/cleaner.git
 $ composer global require octolab/cleaner:1.0-alpha
 ```
 
-## Pulse of repository
-
-### [Changelog](CHANGELOG.md)
-
-### General information
-
-[![Build status](https://travis-ci.org/octolab/Cleaner.svg?branch=master)](https://travis-ci.org/octolab/Cleaner)
-[![Tests status](http://php-eye.com/badge/octolab/cleaner/tested.svg?branch=dev-master)](http://php-eye.com/package/octolab/cleaner)
-[![Latest stable version](https://poser.pugx.org/octolab/cleaner/v/stable.png)](https://packagist.org/packages/octolab/cleaner)
-[![License](https://poser.pugx.org/octolab/cleaner/license.png)](https://packagist.org/packages/octolab/cleaner)
-
-### Code quality
-
-[![Code coverage](https://scrutinizer-ci.com/g/octolab/Cleaner/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/octolab/Cleaner/?branch=master)
-[![Scrutinizer code quality](https://scrutinizer-ci.com/g/octolab/Cleaner/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/octolab/Cleaner/?branch=master)
-[![Code Climate code quality](https://codeclimate.com/github/octolab/Cleaner/badges/gpa.svg)](https://codeclimate.com/github/octolab/Cleaner)
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/99b52451-fe3f-49b3-9842-63254d7e7e34/big.png)](https://insight.sensiolabs.com/projects/99b52451-fe3f-49b3-9842-63254d7e7e34)
-
-### Stats
-
-[![Total downloads](https://poser.pugx.org/octolab/cleaner/downloads.png)](https://packagist.org/packages/octolab/cleaner)
-[![Monthly downloads](https://poser.pugx.org/octolab/cleaner/d/monthly.png)](https://packagist.org/packages/octolab/cleaner)
-[![Daily downloads](https://poser.pugx.org/octolab/cleaner/d/daily.png)](https://packagist.org/packages/octolab/cleaner)
-[![Total references](https://www.versioneye.com/php/octolab:cleaner/reference_badge.svg)](https://www.versioneye.com/php/octolab:cleaner/references)
-
 ### Feedback
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/octolab/Cleaner)
@@ -65,6 +43,5 @@ $ composer global require octolab/cleaner:1.0-alpha
 
 ## Notes
 
+- tested on PHP 7.0, 7.1 and 7.2
 - made with ❤️ by [OctoLab](https://www.octolab.org/)
-
-[![Analytics](https://ga-beacon.appspot.com/UA-109817251-3/Cleaner/readme)](https://github.com/igrigorik/ga-beacon)
