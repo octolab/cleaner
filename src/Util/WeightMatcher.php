@@ -20,7 +20,7 @@ final class WeightMatcher implements MatcherInterface
      */
     public function match($package, array $devFileGroups)
     {
-        assert('is_string($package)');
+        assert(is_string($package));
         $sortedRules = array();
         $packageNamespace = false !== ($pos = strpos($package, '/')) ? substr($package, 0, $pos) : '';
         if (isset($this->rules[$package])) {
@@ -86,7 +86,7 @@ final class WeightMatcher implements MatcherInterface
             self::ALL => false,
         );
         foreach ($rules as $rule) {
-            assert('is_string($rule)');
+            assert(is_string($rule));
             switch (true) {
                 case $rule === '*':
                     $sorted[self::ALL] = true;
