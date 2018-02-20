@@ -43,5 +43,5 @@ $ composer global require octolab/cleaner:1.0-alpha
 
 ## Notes
 
-- tested on PHP 5.6, 7.0, 7.1 and 7.2
+- tested on PHP 5.3, 5.4, 5.5, 5.6, 7.0, 7.1 and 7.2
 - made with ❤️ by [OctoLab](https://www.octolab.org/)
