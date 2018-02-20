@@ -125,6 +125,15 @@ config:
 
 Will be interpreted as _remove `bin` category of `dev-files` from all packages_.
 
+```yaml
+config:
+  octolab/cleaner:
+    clean:
+      vendor/*: [tests]
+```
+
+Will be interpreted as _remove `tests` category of `dev-files` from all packages of `vendor`_.
+
 #### Using denial
 
 ```yaml
