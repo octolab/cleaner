@@ -37,8 +37,8 @@ final class GlobFinder implements FinderInterface
         $sub = array();
         chdir($cwd = $this->current);
         foreach ($patterns as $pattern) {
-            assert('is_string($pattern)');
-            if ($pattern[0] === '!') {
+            assert(is_string($pattern));
+            if (strpos($pattern, '!') === 0) {
                 $sub[] = glob(substr($pattern, 1));
             } else {
                 $add[] = glob(ltrim($pattern, '/'));
@@ -63,7 +63,7 @@ final class GlobFinder implements FinderInterface
         chdir($cwd = $this->current);
         foreach ($patterns as $pattern) {
             assert(is_string($pattern));
-            if ($pattern[0] === '!') {
+            if (strpos($pattern, '!') === 0) {
                 foreach (glob(substr($pattern, 1)) as $file) {
                     unset($files[$file]);
                 }
